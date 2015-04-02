@@ -19,6 +19,8 @@ Using the Featured image (post thumbnail)
 
 Using an ACF Image
 
+Field must be set to "Image ID" for this to work!
+
 <?php $mobile = wp_get_attachment_image_src(get_field('featured_image')['id'], 'hero-mobile'); ?>
 <?php $tablet = wp_get_attachment_image_src(get_field('featured_image')['id'], 'hero-tablet'); ?>
 <?php $desktop = wp_get_attachment_image_src(get_field('featured_image')['id'], 'hero-desktop'); ?>
