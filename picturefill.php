@@ -33,5 +33,5 @@ Field must be set to "Image ID" for this to work!
 	<source srcset="<?php echo $desktop[0]; ?>" media="(max-width: 1024px)">
 	<source srcset="<?php echo $retina[0]; ?>" data-media="(min-device-pixel-ratio: 2)">
 	<!--[if IE 9]></video><![endif]-->
-	<img srcset="<?php echo $large_image[0]; ?>">
+	<img srcset="<?php echo $desktop[0]; ?>">
 </picture>
