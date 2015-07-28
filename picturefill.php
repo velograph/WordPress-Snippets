@@ -2,17 +2,27 @@
 
 Using the Featured image (post thumbnail)
 
-<?php $small_image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'hero-small' ); ?>
-<?php $medium_image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'hero' ); ?>
-<?php $large_image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'hero-2x' ); ?>
+<?php $mobile = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'mobile' ); ?>
+<?php $tablet = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'tablet' ); ?>
+<?php $desktop = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'desktop' ); ?>
+<?php $retina = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'retina' ); ?>
 
 <picture>
 	<!--[if IE 9]><video style="display: none;"><![endif]-->
-	<source srcset="<?php echo $small_image[0]; ?>" media="(max-width: 600px)">
-	<source srcset="<?php echo $medium_image[0]; ?>" media="(min-width: 601px)">
-	<source srcset="<?php echo $large_image[0]; ?>" media="(min-width: 801px)">
+	<source
+		srcset="<?php echo $mobile[0]; ?>"
+		media="(max-width: 500px)" />
+	<source
+		srcset="<?php echo $tablet[0]; ?>"
+		media="(max-width: 860px)" />
+	<source
+		srcset="<?php echo $desktop[0]; ?>"
+		media="(max-width: 1180px)" />
+	<source
+		srcset="<?php echo $retina[0]; ?>"
+		media="(min-width: 1181px)" />
 	<!--[if IE 9]></video><![endif]-->
-	<img srcset="<?php echo $large_image[0]; ?>">
+	<img srcset="<?php echo $desktop[0]; ?>">
 </picture>
 
 ----------------------------------------------------------------
@@ -21,17 +31,25 @@ Using an ACF Image
 
 Field must be set to "Image ID" for this to work!
 
-<?php $mobile = wp_get_attachment_image_src(get_field('featured_image'), 'hero-mobile'); ?>
-<?php $tablet = wp_get_attachment_image_src(get_field('featured_image'), 'hero-tablet'); ?>
-<?php $desktop = wp_get_attachment_image_src(get_field('featured_image'), 'hero-desktop'); ?>
-<?php $retina = wp_get_attachment_image_src(get_field('featured_image'), 'hero02x'); ?>
+<?php $mobile = wp_get_attachment_image_src(get_sub_field('image'), 'mobile'); ?>
+<?php $tablet = wp_get_attachment_image_src(get_sub_field('image'), 'tablet'); ?>
+<?php $desktop = wp_get_attachment_image_src(get_sub_field('image'), 'desktop'); ?>
+<?php $retina = wp_get_attachment_image_src(get_sub_field('image'), 'retina'); ?>
 
 <picture>
-	<!--[if IE 9]><video style="display: none;"><![endif]-->
-	<source srcset="<?php echo $mobile[0]; ?>" media="(max-width: 400px)">
-	<source srcset="<?php echo $tablet[0]; ?>" media="(max-width: 801px)">
-	<source srcset="<?php echo $desktop[0]; ?>" media="(max-width: 1024px)">
-	<source srcset="<?php echo $retina[0]; ?>" data-media="(min-device-pixel-ratio: 2)">
+	<!--[if IE 9]><video style="display: none"><![endif]-->
+	<source
+		srcset="<?php echo $mobile[0]; ?>"
+		media="(max-width: 500px)" />
+	<source
+		srcset="<?php echo $tablet[0]; ?>"
+		media="(max-width: 860px)" />
+	<source
+		srcset="<?php echo $desktop[0]; ?>"
+		media="(max-width: 1180px)" />
+	<source
+		srcset="<?php echo $retina[0]; ?>"
+		media="(min-width: 1181px)" />
 	<!--[if IE 9]></video><![endif]-->
 	<img srcset="<?php echo $desktop[0]; ?>">
 </picture>
